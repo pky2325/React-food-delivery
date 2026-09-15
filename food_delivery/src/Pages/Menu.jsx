@@ -1,26 +1,64 @@
-import Cart from "../Component/FoodCart"
+import { useEffect, useState } from "react";
 
 
-const foods = [
-  { id: 1, name: "Momo", price: 250 },
-  { id: 2, name: "Chowmin", price: 450 },
-  {id: 3, name:"samosa", price:23}
-];
-function Menu(){
-    return(
-        <>
-        <h1>Menu</h1>
-        <Cart name="Burger" price={120} />
-        <Cart name="Pizza" price={900} />
-        
-      {foods.map(food => (
-        <Cart key={food.id}
-          name={food.name}
-          price={food.price}
-        />
-      ))}
-        
-        </>
-    )
+function Menu() {
+  const [food, setFood] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/recipes")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Something went wrong");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setFood(data.recipes);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+
+      });
+  }, []);
+
+  if (loading) {
+    return <h2>Loading......</h2>
+
+  }
+  if (error) {
+    return <h2>Error:{error}</h2>
+  }
+  return (
+    <div>
+      <h1>Menu</h1>
+
+      {food.map((item) => {
+        return (
+          <div key={item.id}>
+            <h2>{item.name}</h2>
+            <img
+              src={item.image}
+              alt={item.name}
+              width="200"
+            />
+
+            <p>{item.cuisine}</p>
+            <p>{item.rating}</p>
+
+          </div>
+        )
+
+      })}
+    </div>
+  )
+
+
 }
 export default Menu;
+
+

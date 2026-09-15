@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 function Navbar(){
     return(
-       <navbar>
+       <nav>
         <Link to="/">Home</Link> | 
           <Link to="/Menu">Menu</Link> | 
         <Link to="/Checkout">Checkout</Link> | 
@@ -10,7 +10,7 @@ function Navbar(){
 
         <h1>Food App</h1> 
 
-       </navbar>
+       </nav>
     
         
     );
