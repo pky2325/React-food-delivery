@@ -6,6 +6,7 @@ import Cart from "./Pages/Cart";
 
 
 import Navbar from "./Component/Navbar";
+// import FoodCard from "./Component/FoodCard";
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Menu" element={<Menu />} />
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/Cart" element={<Cart />} />
+        {/* <Route path="/FoodCard" element={<FoodCard />} /> */}
       </Routes>
     
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import FoodCard from "../Component/FoodCard";
 
 
 function Menu() {
@@ -49,6 +50,8 @@ function Menu() {
 
             <p>{item.cuisine}</p>
             <p>{item.rating}</p>
+
+            <FoodCard food={item} />
 
           </div>
         )
