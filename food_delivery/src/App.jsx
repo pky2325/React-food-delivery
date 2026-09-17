@@ -11,10 +11,12 @@ import Navbar from "./Component/Navbar";
 
 
 
+
 function App() {
   return (
     <>
       <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Menu" element={<Menu />} />
